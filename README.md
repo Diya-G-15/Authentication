@@ -14,6 +14,8 @@ This project is a **React.js-based registration and login form** that allows use
 ## Demo
 ![image](https://github.com/user-attachments/assets/20d810fc-52bb-47ee-8787-9ae804e7a226)
 
+![image](https://github.com/user-attachments/assets/0b51f65e-2d34-49ed-9da5-4ef295f3de5a)
+
 ![image](https://github.com/user-attachments/assets/1b367be7-6179-4922-8fd6-bb3b55404042)
 
 
