@@ -36,13 +36,13 @@ To get the project running locally on your machine, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/react-registration-login-form.git
+   git clone https://github.com/Diya-G-15/Authentication.git
    ```
 
 2. **Navigate to the project directory:**
 
    ```bash
-   cd react-registration-login-form
+   cd Authentication
    ```
 
 3. **Install dependencies:**
