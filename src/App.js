@@ -6,13 +6,13 @@ import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
-  const isAuthenticated = localStorage.getItem('authenticated');
+  const isAuthenticated = localStorage.getItem('isLoggedIn');
 
   return (
     <Router>
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={isAuthenticated ? <Navigate to="/home" /> : <Register />} />
+        <Route path="/login" element={isAuthenticated ? <Navigate to="/home" /> :<Login />} />
         <Route path="/home" element={<ProtectedRoute component={Home} />} />
         <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Navigate to="/register" />} />
       </Routes>

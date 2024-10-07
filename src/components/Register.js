@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/form.css';
 
@@ -8,9 +8,25 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  // Prevent logged-in users from accessing the register page
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      navigate('/home'); // Redirect to home if already logged in
+    }
+  }, [navigate]);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem('users')) || [];
+    // Check if the email is already registered
+    const existingUser = users.find((user) => user.email === email);
+    
+    if (existingUser) {
+      alert('This email is already registered. Please use a different email.');
+      return;
+    }
+
     users.push({ name, email, password });
     localStorage.setItem('users', JSON.stringify(users));
     navigate('/login');

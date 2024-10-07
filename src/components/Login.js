@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/form.css';
 
@@ -7,13 +7,21 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+   // Prevent logged-in users from accessing the login page
+   useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      navigate('/home'); // Redirect to home if already logged in
+    }
+  }, [navigate]);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const user = users.find((user) => user.email === email && user.password === password);
 
     if (user) {
-      localStorage.setItem('authenticated', true);
+      localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/home');
     } else {
@@ -44,6 +52,9 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <div style={{ paddingTop: '20px', textAlign: 'center' }}>
+      Do not have an account? <a href="/register">Register</a>
+      </div>
     </div>
     </div>
     </div>

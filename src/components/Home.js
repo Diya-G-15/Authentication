@@ -6,7 +6,7 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const handleLogout = () => {
-    localStorage.removeItem('authenticated');
+    localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
     navigate('/login');
   };
